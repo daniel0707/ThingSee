@@ -15,7 +15,8 @@
  *   Stores username and password to SharedPreferences 17.02.2017
  */
 package daniel_vahlametropolia.thingsee;
-
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -36,6 +37,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import daniel_vahlametropolia.thingsee.R;
 
@@ -46,7 +54,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+
+
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
     final int EXECUTE_ORDER = 6;
     private static final int    MAXPOSITIONS = 1;
     private static final String PREFERENCEID = "Credentials";
@@ -303,5 +313,4 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         return d;
     }
-
 }

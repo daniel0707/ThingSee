@@ -56,7 +56,7 @@
         android:text="@string/aveSpeed"
         android:layout_alignBaseline="@+id/txtAveSpeed"
         android:layout_alignBottom="@+id/txtAveSpeed"
-        android:layout_toEndOf="@+id/txtDistance" />
+        android:layout_alignStart="@+id/showDistance" />
 
     <Button
         android:layout_width="match_parent"

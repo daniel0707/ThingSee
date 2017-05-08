@@ -11,17 +11,13 @@
     android:orientation="vertical"
     tools:context="daniel_vahlametropolia.thingsee.MainActivity">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:id="@+id/map" />
 
-    <ListView
+   <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="daniel_vahlametropolia.thingsee.MapFragment"
+        android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:id="@+id/speed" />
+        android:layout_weight="5"/>
 
     <LinearLayout
         android:layout_width="match_parent"
