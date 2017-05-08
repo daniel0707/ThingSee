@@ -83,6 +83,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Double FirstTime = null;
     private Double DeltaTime = null;
 
+    private TextView SpeedText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +97,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         startButton.setOnClickListener(this);
         stopButton.setOnClickListener(this);
         statisticButton.setOnClickListener(this);
+
+        SpeedText = (TextView)findViewById(R.id.SpeedValue);
+
 
         // initialize the array so that every position has an object (even it is empty string)
         for (int i = 0; i < positions.length; i++)
@@ -295,6 +300,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             LastLoc = CurrentLoc;
             LastTime = CurrentTime;
         }
+
+        SpeedText.setText(CurrentSpeed.toString()+" km/s");
 
     }
     private double HaversineDistance(Location current, Location last){
