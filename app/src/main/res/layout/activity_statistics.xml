@@ -9,6 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="70dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
         android:id="@+id/txtDistance"
         android:text="@string/distance"
         android:layout_alignParentTop="true"
@@ -17,9 +21,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
         android:id="@+id/txtTime"
         android:text="@string/time"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/txtDistance"
         android:layout_alignParentStart="true" />
 
@@ -27,36 +34,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtAveSpeed"
+        android:layout_marginLeft="60dp"
+        android:textSize="15dp"
+        android:textStyle="bold"
         android:text="@string/aveSpeed"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/txtTime"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:id="@+id/showDistance"
         android:text="@string/distance"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBaseline="@+id/txtDistance"
+        android:layout_alignBottom="@+id/txtDistance"
+        android:layout_alignStart="@+id/showTime" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:id="@+id/showTime"
         android:text="@string/time"
-        android:layout_above="@+id/txtAveSpeed"
-        android:layout_toEndOf="@+id/txtTime"
-        android:layout_marginStart="13dp" />
+        android:layout_alignBaseline="@+id/txtTime"
+        android:layout_alignBottom="@+id/txtTime"
+        android:layout_alignStart="@+id/showAveSpeed" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:id="@+id/showAveSpeed"
         android:text="@string/aveSpeed"
+        android:layout_marginStart="34dp"
         android:layout_alignBaseline="@+id/txtAveSpeed"
         android:layout_alignBottom="@+id/txtAveSpeed"
-        android:layout_alignStart="@+id/showDistance" />
+        android:layout_toEndOf="@+id/txtDistance" />
 
     <Button
         android:layout_width="match_parent"
