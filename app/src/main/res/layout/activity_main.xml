@@ -11,15 +11,52 @@
     android:orientation="vertical"
     tools:context="daniel_vahlametropolia.thingsee.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/mybutton"
-        android:text="Request data from the ThingseeONE" />
+        android:layout_weight="5"
+        android:id="@+id/map" />
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mylist" />
+        android:layout_weight="5"
+        android:id="@+id/speed" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_start"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/start" />
+
+        <Button
+            android:id="@+id/button_stop"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/stop" />
+
+        <Button
+            android:id="@+id/button_statistics"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/statistics" />
+
+    </LinearLayout>
+
 </LinearLayout>

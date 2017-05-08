@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="daniel_vahlametropolia.thingsee.StatisticsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDistance"
+        android:text="@string/distance"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTime"
+        android:text="@string/time"
+        android:layout_marginTop="84dp"
+        android:layout_below="@+id/txtDistance"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAveSpeed"
+        android:text="@string/aveSpeed"
+        android:layout_marginTop="92dp"
+        android:layout_below="@+id/txtTime"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showDistance"
+        android:text="@string/distance"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showTime"
+        android:text="@string/time"
+        android:layout_above="@+id/txtAveSpeed"
+        android:layout_toEndOf="@+id/txtTime"
+        android:layout_marginStart="13dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showAveSpeed"
+        android:text="@string/aveSpeed"
+        android:layout_alignBaseline="@+id/txtAveSpeed"
+        android:layout_alignBottom="@+id/txtAveSpeed"
+        android:layout_toEndOf="@+id/txtDistance" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/back"
+        android:text="@string/back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

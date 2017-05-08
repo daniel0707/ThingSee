@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.CursorIndexOutOfBoundsException;
 import android.location.Location;
@@ -46,6 +47,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 public class MainActivity extends Activity implements View.OnClickListener {
+    final int EXECUTE_ORDER = 6;
     private static final int    MAXPOSITIONS = 1;
     private static final String PREFERENCEID = "Credentials";
 
@@ -60,12 +62,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Location LastLoc = null;
     private Location CurrentLoc = null;
 
-    private Double TotalDistance = null;
+    public Double TotalDistance = null;
     private Double CurrentSpeed = null;
-    private Double AverageSpeed = null;
+    public Double AverageSpeed = null;
     private Double DeltaDist = null;
 
-    private Double TotalTime = null;
+    public Double TotalTime = null;
     private Double CurrentTime = null;
     private Double LastTime = null;
     private Double FirstTime = null;
@@ -76,19 +78,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button startButton = (Button)findViewById(R.id.button_start);
+        Button stopButton = (Button)findViewById(R.id.button_stop);
+        Button statisticButton = (Button)findViewById(R.id.button_statistics);
+
+        startButton.setOnClickListener(this);
+        stopButton.setOnClickListener(this);
+        statisticButton.setOnClickListener(this);
+
         // initialize the array so that every position has an object (even it is empty string)
         for (int i = 0; i < positions.length; i++)
             positions[i] = "";
-
-        // setup the adapter for the array
-        myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, positions);
-
-        // then connect it to the list in application's layout
-        ListView listView = (ListView) findViewById(R.id.mylist);
-        listView.setAdapter(myAdapter);
-
-        // setup the button event listener to receive onClick events
-        ((Button)findViewById(R.id.mybutton)).setOnClickListener(this);
 
         // check that we know username and password for the Thingsee cloud
         SharedPreferences prefGet = getSharedPreferences(PREFERENCEID, Activity.MODE_PRIVATE);
@@ -110,8 +110,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             //add delay for executing this task again
             handler.postDelayed(this,interval);
-            }
-        };
+        }
+    };
 
     // Call this method to start repeatedly requesting updates from Cloud
     private void startRepeatingTask(){
@@ -170,15 +170,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         // show it
         alertDialog.show();
-}
+    }
 
     public void onClick(View v) {
         Log.d("USR", "Button pressed");
 
-        //Will start repeating task upon clicking button
-        // ***** Make one button to start and one button to stop ****
-        startRepeatingTask();
+        if(v.getId() == R.id.button_start){
+            startRepeatingTask();
+        }
+
+        if(v.getId() == R.id.button_stop){
+            stopRepeatingTask();
+        }
+
+        if(v.getId() == R.id.button_statistics){
+            Intent myIntent = new Intent(this, StatisticsActivity.class);
+            myIntent.putExtra("totalDistance",TotalDistance);
+            myIntent.putExtra("totalTime",TotalTime);
+            myIntent.putExtra("aveSpeed",AverageSpeed);
+            startActivityForResult(myIntent,EXECUTE_ORDER);
+        }
     }
+
+    public void onActivityResult(){};
 
     /* This class communicates with the ThingSee client on a separate thread (background processing)
      * so that it does not slow down the user interface (UI)
@@ -232,15 +246,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // *** now it will try again ***
                 new TalkToThingsee().execute("QueryState");
             }
-            myAdapter.notifyDataSetChanged();
         }
 
         @Override
         protected void onPreExecute() {
-            // first clear the previous entries (if they exist)
-            for (int i = 0; i < positions.length; i++)
-                positions[i] = "";
-            myAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -263,7 +272,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             DeltaTime = 0d;
         }
 
-        if(CurrentLoc!=LastLoc){
+        if(CurrentLoc.getTime()!=LastLoc.getTime()){
             TotalTime = CurrentTime - FirstTime;
             DeltaTime = CurrentTime - LastTime;
 

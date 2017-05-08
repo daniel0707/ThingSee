@@ -3,4 +3,11 @@
     <string name="prompt">No credentials set, give Thingsee username and password</string>
     <string name="info_prompt">Invalid username/password or no connection to Thingsee, give Thingsee username and password</string>
     <string name="no_connection">No connection to Thingsee</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="distance">TOTAL DISTANCE:</string>
+    <string name="time">TOTAL TIME:</string>
+    <string name="aveSpeed">AVERAGE SPEED:</string>
+    <string name="back">BACK</string>
 </resources>
